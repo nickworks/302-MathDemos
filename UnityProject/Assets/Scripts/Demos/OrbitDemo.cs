@@ -6,6 +6,9 @@ using UnityEngine;
 public class OrbitDemo : MonoBehaviour
 {
 
+    public float timeMultiplier = 1;
+    public float timeOffset = 0;
+
     public Transform orbitCenter;
 
     public float radius = 10;
@@ -28,8 +31,8 @@ public class OrbitDemo : MonoBehaviour
     {
         if (!orbitCenter) return;
 
-        float x = radius * Mathf.Cos(Time.time);
-        float z = radius * Mathf.Sin(Time.time);
+        float x = radius * Mathf.Cos(Time.time * timeMultiplier + timeOffset);
+        float z = radius * Mathf.Sin(Time.time * timeMultiplier + timeOffset);
 
         transform.position = new Vector3(x, 0, z) + orbitCenter.position;
 
